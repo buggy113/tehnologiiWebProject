@@ -1,0 +1,372 @@
+body {
+    background-color: #FAFAFA;
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, sans-serif;
+}
+
+.loginButton {
+    display: inline-block;
+    background-color: rgb(216, 216, 216);
+    margin-right: 10px;
+    border-top: 3px solid grey;
+    border-right: 3px solid grey;
+    border-left: 3px solid grey;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.loginButton:hover {
+    background-color: rgb(141, 150, 163);
+}
+
+#advertisment {
+    background-color: #EEEEEE;
+    height: 350px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#advantages {
+    top: 10px;
+    position: relative;
+    max-width: 1100px;
+    align-items: stretch;
+    overflow: hidden;
+    display: -webkit-flex;
+    display: flex;
+    height: 60px;
+    background-color: #d6e3ff;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+}
+
+.icon {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+}
+
+.advantages-item {
+    min-width: 200px;
+    display: inline-block;
+    position: relative;
+    width: 180px;
+    margin: 0;
+    padding: 6px;
+    height: 48px;
+    align-items: center;
+    border-right: 1px solid gray;
+}
+
+.advantages-item p {
+    color: #005698;
+    padding-left: 10px;
+    position: absolute;
+    line-height: 48px;
+    display: inline-block;
+    font-size: 18px;
+    height: 60px;
+    margin: 0;
+    text-align: center;
+    padding-top: 0px;
+}
+
+#banner {
+    width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background-color: #cccccc;
+    height: 100px;
+}
+
+#top-right a img {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    padding: 2px;
+    padding-bottom: 0;
+}
+
+.logo {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.logoimg {
+    position: absolute;
+    width: 300px;
+    left: 20px;
+    bottom: 0;
+}
+
+#top-right,
+#top-right a {
+    text-decoration: none;
+    padding-right: 20px;
+    font-size: 15px;
+    text-align: right;
+    color: darkblue;
+    padding-bottom: 0;
+}
+
+#top-right {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.topnav {
+    background-color: #3f3f3f;
+    overflow: hidden;
+    box-shadow: 2px 2px 20px gray;
+}
+
+.topnav a {
+    font-size: 25px;
+    display: block;
+    float: left;
+    padding: 13px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
+
+.topnav a:hover {
+    background-color: #888888;
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-attachment: fixed;
+}
+
+.search-bar input {
+    background-image: url("../img/searchicon.png");
+    background-size: 25px 25px;
+    background-position: 2px 2px;
+    margin: 6px;
+    width: 150px;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    font-size: 22px;
+    border-color: grey;
+    border-radius: 15px;
+    transition: width 0.4s ease-in-out;
+}
+
+.search-bar-box {
+    display: block;
+    margin-top: 12px;
+    float: right;
+    padding-right: 15px;
+}
+
+.search-bar input:focus {
+    width: 350px;
+}
+
+
+/*...................................*/
+
+.whole-button {
+    position: relative;
+    width: 180px;
+}
+
+.column-wrapper {
+    display: table;
+    width: auto;
+    margin-right: 100px;
+    overflow: hidden;
+    margin-left: 2%;
+    margin-top: 5%;
+}
+
+.side-bar-elements {
+    top: 300px;
+    position: fixed;
+    transition: 0.7s;
+}
+
+.column-side-bar,
+.column-products {
+    box-shadow: 0px 0px 20px lightgray;
+    display: table-cell;
+    vertical-align: top;
+}
+
+.dropbtn {
+    width: 220px;
+    overflow: hidden;
+    display: block;
+    background-color: #1f4582;
+    color: white;
+    padding: 16px;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    text-align: center !important;
+}
+
+.dropbtn a {
+    text-decoration: none;
+    color: white !important;
+    padding: 0;
+}
+
+.dropdown-content {
+    position: absolute;
+    display: none;
+    left: 220px;
+    top: 0px;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.dropdown-content li {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content li:hover {
+    background-color: #f1f1f1
+}
+
+.whole-button:hover .dropdown-content {
+    display: block;
+}
+
+.whole-button:hover .dropbtn {
+    background-color: #325da3;
+    border: 1px solid #214682;
+    border-radius: 2px;
+}
+
+
+/*......................FLEX..................*/
+
+.column-side-bar {
+    padding-top: 100px;
+    padding-right: 100px;
+    width: 180px;
+}
+
+.column-products {
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.product {
+    display: inline-block;
+    margin: 5px;
+    height: 320px;
+    width: 250px;
+    margin-left: 50px;
+    text-align: center;
+    color: darkblue;
+}
+
+.product a {
+    text-decoration: none;
+}
+
+.product img {
+    overflow: hidden;
+    width: 250px;
+    height: 250px;
+    transition: 0.5s;
+}
+
+.product img:hover {
+    transform: scale(1.2, 1.2);
+}
+
+.text-product {
+    color: darkblue;
+    font-size: 18px;
+}
+
+.price-product {
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.footer-content {
+    margin-top: 100px;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: block;
+}
+
+.column {
+    overflow: hidden;
+    color: grey;
+    vertical-align: top;
+    margin-bottom: 50px;
+    margin-top: 40px;
+    display: inline-block;
+    width: 32%;
+}
+
+.column-title {
+    color: darkgray;
+    margin-left: 30%;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.column-text {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 12px;
+    margin-top: 5px;
+    margin-left: 30%;
+    border-left: 1px solid grey;
+    padding: 4px 0px 4px 12px;
+}
+
+.column img {
+    width: 200px;
+    height: 40px;
+}
+
+.column ul li {
+    text-decoration: none;
+}
+
+.pp {
+    display: none;
+    position: absolute;
+    text-align: center !important;
+    background-color: #FAFAFA;
+    height: 250px;
+    width: 200px;
+    z-index: 100;
+    border: 2px solid;
+    border-radius: 12px;
+}
+
+.loginButton:hover .pp {
+    display: block;
+}
+
+.pp img {
+    width: 70px;
+    height: 70px;
+    padding: 15px;
+}
+
+.cos-cost {
+    font-weight: bold;
+}

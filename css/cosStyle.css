@@ -1,0 +1,62 @@
+.prod {
+    box-shadow: 0px 0px 20px lightgray;
+    margin-top: 100px;
+    background-color: white;
+    margin-left: 10%;
+    margin-right: 50px;
+    padding: 40px;
+}
+
+h1 {
+    font-size: 40px;
+    color: darkblue;
+}
+
+.prod table {
+    width: 95%;
+    margin: 30px;
+}
+
+.prod table tr td ul {
+    list-style-type: none;
+}
+
+.prod table tr td {
+    margin-left: 50px;
+    padding: 10px;
+    font-size: 25px;
+    font-weight: 900;
+}
+
+.prod table tr td ul {
+    padding: 0;
+}
+
+.prod table tr th {
+    text-align: left;
+    font-size: 20px;
+    width: 40%;
+}
+
+.prod table tr:nth-child(even) {
+    background-color: #eaf2ff
+}
+
+button {
+    display: block;
+    background-color: #325da3;
+    color: white;
+    font-size: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 80%;
+    margin-left: 10%;
+    box-shadow: 0px 0px 20px lightgray;
+}
+
+button:hover {
+    opacity: 0.8;
+}

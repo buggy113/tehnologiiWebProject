@@ -1,0 +1,91 @@
+.header2 {
+    display: block;
+    margin-top: 100px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.prd {
+    display: block;
+    background-color: white;
+    box-shadow: 0px 0px 20px lightgray;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 10px;
+    ;
+    padding: 2%;
+}
+
+.pr-image {
+    min-width: 200px;
+    display: inline-block;
+    width: 30%;
+}
+
+.pr-image img {
+    height: 200px;
+    width: 190px;
+}
+
+.pr-info {
+    vertical-align: top;
+    display: inline-block;
+    width: 60%;
+}
+
+.prd .pr-text {
+    display: inline-block;
+    vertical-align: top;
+    color: darkblue;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.prd .pr-pret {
+    display: inline-block;
+    margin-top: 40px;
+    font-size: 40px;
+    color: darkred;
+    font-weight: bold;
+}
+
+form {
+    display: inline-block;
+}
+
+form button {
+    display: inline-block;
+    background-color: #325da3;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 200px;
+    margin-top: 30px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+h2 select {
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+h2 button {
+    padding: 5px 5px;
+    width: 70px;
+}
+
+h2 input {
+    border-radius: 10px;
+    font-size: 20px;
+    width: 150px;
+}
+
+h2 {
+    padding: 0;
+    margin: 0;
+}

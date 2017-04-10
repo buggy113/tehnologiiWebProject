@@ -1,0 +1,112 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#PageContent {
+    align-content: center;
+}
+
+.ProductContent {
+    box-shadow: 0px 0px 20px lightgray;
+    margin-top: 50px;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.product-image {
+    position: relative;
+    width: 400px;
+    height: 500px;
+}
+
+.product-image figcaption {
+    text-align: center;
+    color: darkblue;
+    font-size: 32px;
+    padding: 5px;
+}
+
+.product-description {
+    align-content: left;
+    vertical-align: top;
+}
+
+.description-text {
+    margin: 0;
+    margin-left: 20%;
+    min-width: 10px;
+    color: darkblue;
+    font-size: 30px;
+}
+
+.buy_button {
+    float: right;
+    background-color: #365fa0;
+    color: white;
+    border: none;
+    text-decoration: none;
+    padding: 15px 30px;
+    cursor: pointer;
+}
+
+.buy_button:hover {
+    background-color: #1f4582;
+}
+
+.product-description h1 {
+    color: darkblue;
+    font-size: 35px;
+}
+
+.product-description fieldset {
+    border-width: 0px;
+    max-width: 1100px;
+    box-shadow: 0px 0px 20px lightgray;
+    display: block;
+    width: 70%;
+    ;
+}
+
+.specs {
+    padding: 5%;
+    width: 70%;
+    box-shadow: 0px 0px 20px lightgray;
+    background-color: white;
+    margin-left: 10%;
+    border-radius: 10px;
+    margin-right: 50px;
+}
+
+.stock {
+    color: limegreen;
+}
+
+.specs table {
+    width: 80%;
+    max-width: 1000px;
+    margin: 30px;
+}
+
+.specs table tr td ul {
+    list-style-type: none;
+}
+
+.specs table tr td {
+    padding: 5px;
+    padding-left: 50px;
+}
+
+.specs table tr td ul {
+    padding: 0;
+}
+
+.specs table tr th {
+    text-align: left;
+}
+
+.specs table tr:nth-child(even) {
+    background-color: #eaf2ff
+}

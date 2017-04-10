@@ -1,0 +1,28 @@
+.video-and-image {
+    margin-top: 50px;
+    height: 500px;
+    width: 100%;
+    box-shadow: 4px 4px 10px lightgray;
+    overflow: hidden;
+}
+
+.video-and-image img {
+    width: 75%;
+}
+
+.emb-video {
+    position: absolute;
+    padding-bottom: 56.25%;
+    padding-top: 130px;
+    height: 0;
+    overflow: hidden;
+    max-width: 80%;
+    height: auto;
+    overflow: hidden;
+    margin: auto;
+}
+
+.slide-image {
+    position: absolute;
+    width: 70%;
+}

@@ -1,0 +1,54 @@
+.profileContent {
+    padding: 5%;
+}
+
+.inputElement {
+    display: block;
+    padding: 2px;
+    min-width: 200px;
+}
+
+.infoBlock {
+    padding-left: 10%;
+}
+
+.textElement {
+    display: inline-block;
+    width: 100px;
+}
+
+.userType {
+    display: inline-block;
+    width: 40%;
+}
+
+fieldset {
+    box-shadow: 0px 0px 20px lightgray;
+    background-color: white;
+}
+
+.userType input {
+    width: 100%;
+    min-width: 100px;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.editButton {
+    width: 150px;
+    background-color: #325da3;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px lightgray;
+}
+
+.editButton:hover {
+    opacity: 0.8;
+}
+
+fieldset h2 {
+    padding-left: 30px;
+}
