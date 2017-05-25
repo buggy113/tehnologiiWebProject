@@ -8,38 +8,38 @@ Proiectul e structurat pe foldere;
 
 Site-ul contine urmatoarele pagini:
 
-index.html
+index.php
     Reprezinta home-page-ul site-ului. Va contine produse random din site. Bara din stanga se misca folosind javascript.
 Contine link-uri catre celelalte pagini ale site-ului.
 
-admin.html
+admin.php
     Contine o lista cu Userii de pe site si permite modificarea si stergerea userilor
 
-asamblare.html 
+asamblare.php 
     Contine un slideShow peste care am pus un video in care se descrie cum se asambleaza un PC.
 
-contact.html    
+contact.php    
     Pagina de contact a magazinului. Contine o Harta din API-ul GoogleMaps introdusa prin javaScript.
 
-editProfile.html
+editProfile.php
     Permite editarea profilului unui user.
 
-info.html  
+info.php  
     Contine informatii despre magazin.
 
-login.html  
+login.php  
     Pagina prin care userii se pot loga.
 
-register.html  
+register.php  
     Pagina prin care un user isi poate inregistra un cont nou.
 
-reset.html
+reset.php
     Pagina de resetare a parolei.
 
-cos.html
+cos.php
     Pagina pe care se pot vizualiza/sterge produse din cos. De asemenea are si un buton care initializeaza cumpararea.
 
-produsTemplate.html
+produsTemplate.php
     Un template care permite prezentarea detaliilor unui produs. Va fi generata si utilizata pt toate produsele.
 
 listareTemplate

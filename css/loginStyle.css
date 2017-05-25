@@ -74,3 +74,9 @@ img.avatar {
     margin-left: 50px;
     text-align: right;
 }
+
+.error_message {
+    color: red;
+    font-weight: bold;
+    /*font-size: 100px;*/
+}
