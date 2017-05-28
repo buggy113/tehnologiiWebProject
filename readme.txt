@@ -1,51 +1,51 @@
-README
+TEMA 2
 
-Proiectul e structurat pe foldere;
-    css - fisiere css
-    img - imagini
-    js - scripturi
-    Paginile web sunt in root
+Am adaugat functionalitati de server si baze de date proiectului.
 
-Site-ul contine urmatoarele pagini:
+Adaugarea posibilitatii de inregistrare a unui cont. Dupa inregistrare se redirectioneaza catre Login.
 
-index.php
-    Reprezinta home-page-ul site-ului. Va contine produse random din site. Bara din stanga se misca folosind javascript.
-Contine link-uri catre celelalte pagini ale site-ului.
+Adaugarea posibilitatii de login, verificarea pe server daca userul exista, creare sesiune user curent. Ulterior se poate face logout din dreapta sus, Contul Meu -> Logout
 
-admin.php
-    Contine o lista cu Userii de pe site si permite modificarea si stergerea userilor
+Resetarea parolei este posibila prin pagina dedicata. Am adaugat script php pentru trimis mail. 
 
-asamblare.php 
-    Contine un slideShow peste care am pus un video in care se descrie cum se asambleaza un PC.
+Configurarea contului se poate face dand click pe Contul meu in dreapta sus de pe orice pagina.
 
-contact.php    
-    Pagina de contact a magazinului. Contine o Harta din API-ul GoogleMaps introdusa prin javaScript.
+Vizualizarea produselor se poate face in doua moduri:
+	- pe categorii
+	- toate produsele
 
-editProfile.php
-    Permite editarea profilului unui user.
+	Accesarea acestor vederi se face din pagina principala( index.php din meniul din dreapta.
+	
+Cosul de cumparaturi se poate accesa din dreapta-sus.
+Daca nu este nimeni logat se redirectioneaza catre login page.
+	
+Exista posibilitatea de a sterge obiecte din cos din pagina cosului sau de a goli tot cosul.
 
-info.php  
-    Contine informatii despre magazin.
+Este facuta si cumpararea de produse, default la crearea contului fiecare user are 10000 RON, in momentul cumpararii scade( evident).
 
-login.php  
-    Pagina prin care userii se pot loga.
+In pagina de afisare a produselor se poate face si filtrare/sorteare 
 
-register.php  
-    Pagina prin care un user isi poate inregistra un cont nou.
+Un administrator la logare are in meniul Contul meu posibilitatea de a accesa paginile administrare user si Istoric plati.
 
-reset.php
-    Pagina de resetare a parolei.
+Din pagina administrare useri are posibilitatea de a sterge useri sau de a modifica Nume, adresa de mail..etc
 
-cos.php
-    Pagina pe care se pot vizualiza/sterge produse din cos. De asemenea are si un buton care initializeaza cumpararea.
-
-produsTemplate.php
-    Un template care permite prezentarea detaliilor unui produs. Va fi generata si utilizata pt toate produsele.
-
-listareTemplate
-    Un template generat pentru listarea produselor unei categorii. Va fi generata pt. fiecare categorie.
-Se poate face filtrare si sortare. Poate fi utilizata si pentru a prezenta rezultatele unor cautari.
+In pagina de istoric plati i se afiseaza platile efectuate, valoarea, si data in care au fost efectuate.	
 
 
+Am folosit si ajax pentru apeluri asincrone : -in pagina de admin.php afisarea si stergerea userilor - apelam asincron pagina showUsers.php care introduce cod in <div id="userTable">(AICI!)</div>.
 
-In cadrul proiectului am folosit HTML, CSS, Javascript( +jQuery).
+SQL:
+
+	Baza de date folosita este MySQL. Structura proiectului:
+	
+		users - tabel cu date dspr. useri 
+		categorii produse 
+		istoric - date despre istoricul platilor
+		produse - 
+		cart_entry - se retin intrarile in cosul de cumparaturi, se retin toate intrarile de la toti userii, urmand ca separarea sa se faca pe baza interogarii
+		
+	La produse
+		in campul Detalii sunt stocate specificatiile produselor sub forma: <specificatie1>:<valoare1>;<specificatie2>:<valoare2>, urmand ca parsarea sa se faca in php (si se face :))
+	
+	Pentru procesarile server side am folosit PHP. In momentul dezvoltarii am folosit XAMPP - serverul apache, mysql, si mercury pt. mail.
+		

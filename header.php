@@ -70,7 +70,7 @@
                 ?>
                     <a href="admin.php">Administrare useri</a>
                        <br><br>
-                    <a href="admin.php">Istoric plati</a>
+                    <a href="istoric.php">Istoric plati</a>
                     <br>
                     <br>
                          <?php } ?>
@@ -84,7 +84,7 @@
         </div>
 
         <div class="loginButton">
-            <a href="cos.php">
+            <a href=<?php if(!isset($uid)) echo "login.php"; else echo "cos.php";?>>
                 <img src="img/cart.png"> Cosul meu
             </a>
             <div class="pp" style="right: 0;">
