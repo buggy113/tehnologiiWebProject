@@ -22,12 +22,50 @@
     $con=mysqli_connect("$servername","$username","$password","$dbname");
     if($id_categorie=='$id_cat')
     {
-        $query="SELECT ID_Produs, Denumire, Pret, Imagine, Categorie FROM produse";
+        $query="SELECT ID_Produs, Denumire, Pret, Imagine, Categorie FROM produse WHERE 1=1 ";
     }
     else
     {
-        $query="SELECT ID_Produs, Denumire, Pret, Imagine, Categorie FROM produse WHERE '$id_categorie'=Categorie";
+        $query="SELECT ID_Produs, Denumire, Pret, Imagine, Categorie FROM produse WHERE '$id_categorie'=Categorie ";
     }
+
+    if(isset($_POST["searching_btn"]) && !empty($_POST["search_by"]))
+    {
+        $alta = $_POST["search_by"];
+        $query = $query . " AND Denumire like '%$alta%' ";
+    }
+
+   
+
+
+    if(isset($_POST["submit_filter"]))
+    {
+        $pret_form=$_POST["pret"];
+        switch($_POST['filtertype']){
+        case 'pretmic':
+            $query = $query . " AND Pret<$pret_form ";
+        break;
+        case 'pretmare':
+            $query = $query . " AND Pret>$pret_form ";
+        break;
+    }
+    }
+
+    if(isset($_POST["sort_btn"]))
+    {
+        switch($_POST['sorttype']){
+        case 'nume':
+            $query = $query . " ORDER BY Denumire ";
+        break;
+        case 'pretc':
+            $query = $query . " ORDER BY Pret ";
+        break;
+        case 'pretd':
+            $query = $query . " ORDER BY Pret DESC";
+        break;
+    }
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +89,12 @@
     
     <div class="header2">
         <h1>Rezultate cautare:</h1>
-        <h2>Cauta: <input type="search" id="search" placeholder="Search..." /><button type="submit">Aplică</button></h2>
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"  method="post">
+            <h2>Cauta: <input type="search"  name='search_by' placeholder="Search..." />
+            <button type="submit" name='searching_btn'>Aplică</button></h2>
+        </form>
+        <br>
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"  method="post">
         
         <h2>Sortare după:
             <select name="sorttype">
@@ -59,16 +102,20 @@
                 <option value="pretc">Pret Crescător</option>
                 <option value="pretd">Pret Descrescător</option>
             </select>
-            <button type="submit">Aplică</button>
+            <button type="submit" name='sort_btn'>Aplică</button>
         </h2>
+        </form>
+        <br>
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"  method="post">
         <h2>Filtrare după:
             <select name="filtertype">
                 <option value="pretmic">Pret mai mic</option>
                 <option value="pretmare">Pret mai mare</option>
             </select> decât
             <input type="text" name="pret"> RON.
-            <button type="submit">Aplică</button>
+            <button type="submit" name='submit_filter'>Aplică</button>
         </h2>
+        </form>
 
     </div>
 
