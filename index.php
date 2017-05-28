@@ -4,8 +4,6 @@
     $username = "root";
     $password = "";
     $dbname="bestparts";
-
-
     // select loggedin users detail
 
     $con=mysqli_connect("$servername","$username","$password","$dbname");
@@ -32,19 +30,7 @@
     
    <?php include 'header.php'; ?>
 
-    <div class="topnav">
-        <a href="index.php">Acasă</a>
-        <a href="asamblare.php">Asamblare</a>
-        <a href="info.php">Informații</a>
-        <a href="contact.php">Contact</a>
-
-        <div class="search-bar-box">
-            <div class="search-bar">
-                <input type="search" id="search" placeholder="Search..." />
-            </div>
-        </div>
-
-    </div>
+    
 
 
 
@@ -97,12 +83,18 @@
         <div class="column-wrapper">
             <div class="column-side-bar">
                 <div class="side-bar-elements">
+                <a href='listareTemplate.php?id_categorie=$id_cat'>
+                <div class='whole-button'>
+                   <button class='dropbtn'>Toate produsele</button>
+                </div>
+            </a>
 <?php
         $query="SELECT ID_Categorie, Categorie FROM categorii_produse";
         $result=mysqli_query($con,$query);
         while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)){
             $nume_cat = $row["Categorie"];
-            echo"   <a href='listareTemplate.php?categorie=$nume_cat'>";
+            $id_cat = $row["ID_Categorie"];
+            echo"   <a href='listareTemplate.php?id_categorie=$id_cat'>";
             echo"       <div class='whole-button'>";
             echo"           <button class='dropbtn'>$nume_cat</button>";
             echo"       </div>";
@@ -118,12 +110,13 @@
         echo"<div class='column-products'>";
         while($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
         {
+            $id_produs = $row["ID_Produs"];
             $imag = $row["Imagine"];
             $denum = $row["Denumire"];
             $pret = $row["Pret"];
         
         echo"   <div class='product'>";
-        echo"       <a href='produsTemplate.php'>";
+        echo"       <a href='produsTemplate.php?id_produs=$id_produs'>";
         echo"           <img src='$imag'>";
         echo"           <div class='text-product'>";
         echo"               $denum";

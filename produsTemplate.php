@@ -1,4 +1,33 @@
+<?php
+    session_start();
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname="bestparts";
+    $con=mysqli_connect("$servername","$username","$password","$dbname");
 
+    $id_produs = trim($_GET["id_produs"]);
+    $id_produs = strip_tags($id_produs);
+    $id_produs = htmlspecialchars($id_produs);
+
+    if (isset($_SESSION['uid']))
+    {
+        $id_utilizator=$_SESSION['uid'];
+    }
+    // TODO: Guest sessions
+
+    $query="SELECT Denumire,Pret,ID_Produs,Detalii,Disponibil,Imagine FROM produse WHERE '$id_produs'=ID_Produs";
+    $result=mysqli_query($con,$query);
+    if($result != FALSE && $row=mysqli_fetch_array($result, MYSQLI_ASSOC))
+    {
+        $imag = $row["Imagine"];
+        $denum = $row["Denumire"];
+        $pret = $row["Pret"];
+        $detalii = $row["Detalii"];
+        $disponibi = $row["Disponibil"];
+    }
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,46 +37,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/indexStyle.css">
     <link rel="stylesheet" href="css/procesoareStyle.css">
+
+    <script src="js/utils.js"></script>
 </head>
 
-<body>
 
-    <body onresize="bannerChange()">
+    <body id="product_body" onresize="bannerChange()">
         <?php include 'header.php'; ?>
 
-        <div class="topnav">
-            <a href="index.php">Acasă</a>
-            <a href="asamblare.php">Asamblare</a>
-            <a href="info.php">Informații</a>
-            <a href="contact.php">Contact</a>
-
-            <div class="search-bar-box">
-                <div class="search-bar">
-                    <input type="search" id="search" placeholder="Search..." />
-                </div>
-            </div>
-
-        </div>
+        
 
         <div id="PageContent">
             <table class="ProductContent">
                 <tr>
                     <td class="product-image">
-                        <img src="img/produse/2tb-sata-iii-intellipower-64mb-red-634d503f2c67cbfac87a89dfac9c765c.jpg" title="">
+                        <img src=<?php echo "$imag";?>  title="">
                         <figcaption></figcaption>
 
                     </td>
                     <td class="product-description">
-                        <h1>HDD Toshiba DT01ACA 500GB, 7200rpm, 32MB cache, SATA III</h1>
+                        <h1><?php echo "$denum";?></h1>
                         <br><br>
                         <fieldset>
-                            <p class="stock">*produsul este in stock</p>
+                            <p class="stock"><?php if($disponibi > 0) echo "*produsul este in stoc! ($disponibi produs(e) disponibil(e)";?> </p> <p style="color: red;"> <?php if($disponibi <= 0){ echo "*produsul nu mai este in stoc!"; $nostock=true;}?> </p>
                             <br><br>
                             <p class="description-text">Preț:</p>
 
-                            <p class="description-text"><b>400 RON</b></p>
+                            <p class="description-text"><b><?php echo $pret . " RON";?></b></p>
                             <br><br><br>
-                            <input type="submit" class="buy_button" value="Adaugă în coș!" onclick="location.href='http://www.google.com'">
+                                <?php
+                                if(!isset($nostock)){
+                                echo "<p class='buy_number buy_txt'>Cantitate:</b>";
+                                echo "<input type='number' id='nr_produse'  class='buy_number' name='quantity' min='0' max='$disponibi'>"; 
+                                }?>
+                                <br><br><br>
+                                <?php
+                                if(isset($id_utilizator))
+                                    {if(!isset($nostock)) echo "<a href='#' onclick=addToCart($id_utilizator,$id_produs);><input type='submit' class='buy_button' value='Adaugă în coș!'></a>";}
+                                else
+                                    {if(!isset($nostock)) echo "<a href='login.php'><input type='submit' class='buy_button' value='Adaugă în coș!'></a>";}
+                                ?>
+                            </form>
                         </fieldset>
                     </td>
                 </tr>
@@ -57,50 +87,20 @@
             <div class="specs">
                 <h1>Specificatii:</h1>
                 <table>
+                <?php 
+                    $token = strtok($detalii, ";");
+                    while ($token != false)
+                    {
+                        $el_array = explode(':',$token);
+                    ?>
                     <tr>
-                        <th>Memorie cache:</th>
-                        <td>Mult</td>
+                        <th><?php echo $el_array[0];?></th>
+                        <td><?php echo $el_array[1];?></td>
                     </tr>
-                    <tr>
-                        <th>Socket</th>
-                        <td>1150</td>
-                    </tr>
-                    <tr>
-                        <th>Frecvență procesor(MHz)</th>
-                        <td>3200</td>
-                    </tr>
-                    <tr>
-                        <th>Mod de operare(biti)</th>
-                        <td>64</td>
-                    </tr>
-                    <tr>
-                        <th>Numar nuclee</th>
-                        <td>4</td>
-                    </tr>
-                    <tr>
-                        <th>Tehnologie de fabricatie(nm)</th>
-                        <td>22</td>
-                    </tr>
-                    <tr>
-                        <th>Cooler</th>
-                        <td>Box</td>
-                    </tr>
-                    <tr>
-                        <th>Putere termica(W)</th>
-                        <td>84</td>
-                    </tr>
-                    <tr>
-                        <th>Altele</th>
-                        <td>
-                            <ul>
-                                <li>Intel HD Graphics 4600</li>
-                                <li>AES New Instructions</li>
-                                <li>Intel Identity Protection</li>
-                            </ul>
-                        </td>
-                    </tr>
-
-
+                    <?php
+                    $token = strtok(";");
+                    }
+                    ?>
                 </table>
             </div>
         </div>

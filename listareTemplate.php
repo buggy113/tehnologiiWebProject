@@ -1,9 +1,15 @@
 <?php
  
-   $categorie = trim($_GET["categorie"]);
-   $categorie = strip_tags($categorie);
-   $categorie = htmlspecialchars($categorie);
-   
+    if(!isset($_GET["id_categorie"]))
+    {
+        $id_categorie='$id_cat';
+    }
+    else
+    {
+        $id_categorie = trim($_GET["id_categorie"]);
+        $id_categorie = strip_tags($id_categorie);
+        $id_categorie = htmlspecialchars($id_categorie);
+    }
     session_start();
     $servername = "localhost";
     $username = "root";
@@ -14,6 +20,14 @@
     // select loggedin users detail
 
     $con=mysqli_connect("$servername","$username","$password","$dbname");
+    if($id_categorie=='$id_cat')
+    {
+        $query="SELECT ID_Produs, Denumire, Pret, Imagine, Categorie FROM produse";
+    }
+    else
+    {
+        $query="SELECT ID_Produs, Denumire, Pret, Imagine, Categorie FROM produse WHERE '$id_categorie'=Categorie";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -34,22 +48,11 @@
 
     <?php include 'header.php'; ?>
 
-    <div class="topnav">
-        <a href="index.php">Acasă</a>
-        <a href="asamblare.php">Asamblare</a>
-        <a href="info.php">Informații</a>
-        <a href="contact.php">Contact</a>
-
-        <div class="search-bar-box">
-            <div class="search-bar">
-                <input type="search" id="search" placeholder="Search..." />
-            </div>
-        </div>
-
-    </div>
-
+    
     <div class="header2">
-        <h1>Hard disk-uri/Rezultate cautare:</h1>
+        <h1>Rezultate cautare:</h1>
+        <h2>Cauta: <input type="search" id="search" placeholder="Search..." /><button type="submit">Aplică</button></h2>
+        
         <h2>Sortare după:
             <select name="sorttype">
                 <option value="nume">Nume</option>
@@ -73,20 +76,20 @@
 
     <div class="content">
 
-        <div class="prd">
-            <?php
-            $query="SELECT ID_Produs, Denumire, Pret, Imagine FROM produse";
+        
+        <?php
+            
             $result=mysqli_query($con,$query);
             
-            while($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
+            while($result != FALSE && $row=mysqli_fetch_array($result, MYSQLI_ASSOC))
             {
                 $imag = $row["Imagine"];
                 $denum = $row["Denumire"];
                 $pret = $row["Pret"];
-            echo"<div class='column-products'>";    
+            echo"<div class='prd'>"; 
             echo"<div class='pr-image'>";
             echo"   <a href='produsTemplate.php'>";
-            echo"       <img src='img/produse/2tb-sata-iii-intellipower-64mb-red-634d503f2c67cbfac87a89dfac9c765c.jpg' alt=''>";
+            echo"       <img src='$imag' alt=''>";
             echo"   </a>";
             echo"</div>";
 
@@ -108,11 +111,10 @@
             echo" </div>";
             echo" </div>";
             }
-            
+           
             ?>
-        </div>
-        
-        </div>
+       
+    </div>
 
 
     <?php include('footer.php') ?>

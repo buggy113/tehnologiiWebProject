@@ -42,7 +42,7 @@
 }
 
 .prd .pr-pret {
-    display: inline-block;
+    display: block;
     margin-top: 40px;
     font-size: 40px;
     color: darkred;

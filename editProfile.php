@@ -7,7 +7,14 @@
 
     if(isset($_SESSION['uname']) ) {
         // select loggedin users detail
-        $uname = $_SESSION['uname'];
+        if(isset($_POST["alt_user"]))
+        {
+            $uname = $_POST["alt_user"];
+        }    
+        else
+        {
+            $uname = $_SESSION['uname'];
+        }
         $con=mysqli_connect("$servername","$username","$password","$dbname");
 
         $query="SELECT ID_Utilizator, Nume_Utilizator, Nume, Adresa_Email, Prenume, Data_Nasterii, Sex, Adresa, Localitate, Judet, Numar_Telefon, Tip_Plata FROM users WHERE Nume_Utilizator='$uname'";
@@ -47,19 +54,7 @@
 <body>
     <?php include 'header.php'; ?>
 
-    <div class="topnav">
-        <a href="index.php">Acasă</a>
-        <a href="asamblare.php">Asamblare</a>
-        <a href="info.php">Informații</a>
-        <a href="contact.php">Contact</a>
-
-        <div class="search-bar-box">
-            <div class="search-bar">
-                <input type="search" id="search" placeholder="Search..." />
-            </div>
-        </div>
-
-    </div>
+   
     <div class="profileContent">
 
         <form action="editDatePersonale.php" method="post">
@@ -86,6 +81,10 @@
                 <div class="inputElement">
                     <div class="textElement"> E-mail:</div>
                     <div class="userType"><input type="email" name="email" value=<?php echo "$Adresa_Email";?>></div>
+                </div>
+                <div class="inputElement">
+                    <div class="textElement"> Parola noua:</div>
+                    <div class="userType"><input type="password" name="pass"></div>
                 </div>
                 <div class="inputElement">
                     <div class="textElement"> Data Nașterii:</div>

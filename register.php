@@ -3,7 +3,7 @@
     $username = "root";
     $password = "";
     $dbname="bestparts";
-
+    $error = false;
     //Creare conexiune
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -32,13 +32,24 @@
     
     // basic name validation
     if (empty($name)) {
-    $error = true;
-    $nameError = "Please enter an username";
+        $error = true;
+        $nameError = "Please enter an username";
     } else if (strlen($name) < 3) {
-    $error = true;
-    $nameError = "Username must have atleat 3 characters.";
-    // TODO: check uname exist or not  
-    } 
+        $error = true;
+        $nameError = "Username must have atleat 3 characters.";
+    } else 
+    {   
+        $query="SELECT ID_Utilizator FROM users WHERE Nume_Utilizator='$name'";
+        $result = $conn->query($query);
+        if($result != false){
+            $row_cnt = mysqli_num_rows($result);
+        }
+        if(isset($row_cnt) && $row_cnt > 0)
+        {
+            $error = true;
+            $nameError = "Username already exists!";
+        }
+    }
     
     
     //basic email validation
@@ -46,25 +57,35 @@
     $error = true;
     $emailError = "Please enter valid email address.";
     } else {
-    // TODO: check email exist or not  
+        $query="SELECT ID_Utilizator FROM users WHERE Adresa_email='$email'";
+        $result = $conn->query($query);
+        if($result != false){
+            $row_cnt = mysqli_num_rows($result);
+        }
+        if(isset($row_cnt) && $row_cnt > 0)
+        {
+            $error = true;
+            $emailError = "Email already exists!";
+        }
     }
     
 
     // password validation
     if (empty($pass)){
-    $error = true;
-    $passError = "Please enter password.";
-    } else if(strlen($pass) < 6) {
-    $error = true;
-    $passError = "Password must have atleast 6 characters.";
+        $error = true;
+        $passError = "Please enter password.";
+        } else if(strlen($pass) < 6) {
+        $error = true;
+        $passError = "Password must have atleast 6 characters.";
     }
     
     // password encrypt using SHA256();
     $password = hash('sha256', $pass);
-    if($error != true){
+    if(isset($error) && $error != true){
         // if there's no error, continue to signup
-        $query="INSERT INTO users(`Nume_Utilizator`, `Parola`, `Adresa_Email`, `Indiciu_parola`) VALUES ('$name','$password', '$email', '$hint');";
+        $query="INSERT INTO users(`Nume_Utilizator`, `Parola`, `Adresa_Email`, `Indiciu_parola`,`Tip_Utilizator`) VALUES ('$name','$password', '$email', '$hint','basic');";
         $result = $conn->query($query);
+        header("Location: login.php");
     }
     }
 
@@ -79,16 +100,6 @@
     <link rel="stylesheet" href="css/loginStyle.css">
 </head>
 <body>
-
-    <?php
-    if ( isset($errMSG) ) {
-    ?>
-    alert("A intervenit o eroare");
-
-    <?php
-        }
-    ?>
-
 
     <div id="support">
         <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">

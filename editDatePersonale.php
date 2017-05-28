@@ -16,10 +16,20 @@
         $phone = $_POST['phone'];
         $birth = $_POST['birth'];
         $email = $_POST['email'];
+        $pass  = $_POST['pass'];
 
-        $query = "UPDATE bestparts.users SET Nume= '$lastname', Prenume='$firstname', Numar_Telefon='$phone', Data_Nasterii='$birth', Adresa_Email='$email' WHERE Nume_Utilizator='$uname'";
-        $result=mysqli_query($con,$query);
-        header("Location: editProfile.php");
+
+        if ( !filter_var($email,FILTER_VALIDATE_EMAIL)) {
+            $error = true;
+            $emailError = "Please enter valid email address.";
+        } 
+
+        $password = hash('sha256', $pass);
+        if(!isset($error)){
+            $query = "UPDATE bestparts.users SET Nume= '$lastname', Prenume='$firstname', Parola='$password', Numar_Telefon='$phone', Data_Nasterii='$birth', Adresa_Email='$email'  WHERE Nume_Utilizator='$uname'";
+            $result=mysqli_query($con,$query);
+            
+        }
     }
     if(isset($_POST['ok_date_livrare'])){
         //die($_POST["adress"]);
@@ -31,6 +41,7 @@
 
         $query = "UPDATE bestparts.users SET Tip_Plata='$plata', Adresa='$adresa2', Localitate='$localitate2', Judet='$judet2' WHERE Nume_Utilizator='$uname'";
         $result=mysqli_query($con,$query);
-        header("Location: editProfile.php");
+        
     }
+    header("Location: editProfile.php");
 ?>

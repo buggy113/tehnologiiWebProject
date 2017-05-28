@@ -47,6 +47,7 @@
 
             if( $rowcount == 1) {
                 $_SESSION['uname'] = $row['Nume_Utilizator'];
+                $_SESSION['uid'] = $row['ID_Utilizator'];
                 header("Location: index.php");
                 exit;
             } else {

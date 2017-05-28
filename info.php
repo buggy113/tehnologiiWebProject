@@ -14,20 +14,7 @@
 <body onresize="bannerChange()">
     <?php include 'header.php'; ?>
 
-    <div class="topnav">
-        <a href="index.php">Acasă</a>
-        <a href="asamblare.php">Asamblare</a>
-        <a href="info.php">Informații</a>
-        <a href="contact.php">Contact</a>
-
-        <div class="search-bar-box">
-            <div class="search-bar">
-                <input type="search" id="search" placeholder="Search..." />
-            </div>
-        </div>
-
-    </div>
-    </div>
+   
     <div class="content">
         <img src="img/team.jpg" align="middle">
         <h2>Despre noi</h2>
